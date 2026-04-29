@@ -16,13 +16,14 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd intl mysqli zip
 
-# Buat user baru (vapeuser) agar tidak menggunakan root
-RUN groupadd -g ${GROUP_ID} vapeuser && \
-    useradd -u ${USER_ID} -g vapeuser -m -s /bin/bash vapeuser
+# Buat user baru (xxx) agar tidak menggunakan root
+RUN groupadd -g ${GROUP_ID} xxx && \
+    useradd -u ${USER_ID} -g xxx -m -s /bin/bash xxx
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Set user aktif ke vapeuser
-USER vapeuser
+# Set user aktif ke xxx
+USER xxx
 
 WORKDIR /usr/src/myapp
+
